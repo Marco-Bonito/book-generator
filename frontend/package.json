@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "http-server src",
+    "start": "npm install ; http-server src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,5 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "src": "^1.1.2"
   }
 }
