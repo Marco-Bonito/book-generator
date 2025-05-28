@@ -1,6 +1,9 @@
 import BasePage from '../scripts/internal_page_structure.js';
 
 class DashboardPage extends BasePage {
+    async setImportScripts() {
+        return '<link rel="stylesheet" href="styles/dashboard.css?v=1.0">';
+    }
     async setHeaderContent() {
         return `<h1>Dashboard</h1>`;
     }
@@ -22,6 +25,11 @@ class DashboardPage extends BasePage {
                 <input type="text" placeholder="Scrivi qui..." style="width: 100%; padding: 8px;"/>
             </div>
         `;
+    }
+
+    async render() {
+        await super.render();
+        await this.afterRender();
     }
 }
 

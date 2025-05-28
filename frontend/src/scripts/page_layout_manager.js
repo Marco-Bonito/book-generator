@@ -3,6 +3,7 @@ class PageLayoutManager {
         this.generalContainer = document.getElementById('general-container');
         this.sidebarContainer = document.getElementById('sidebar-container');
         this.headerContainer = document.getElementById('header-container');
+        this.head = document.getElementsByTagName('head')[0];
         this.observer = new MutationObserver(() => {
             this.updateLayout();
         });
