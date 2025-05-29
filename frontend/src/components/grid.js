@@ -1,8 +1,8 @@
 class GridLayout {
-    constructor({ styleGrid = {}, items = []  , styleElement = {}} = {}) {
+    constructor({ styleGrid = {}  , styleElement = {}} = {} , items = []) {
         this.style = styleGrid;
-        this.items = items;
         this.styleElement = styleElement;
+        this.items = items;
     }
 
     addItem(item) {

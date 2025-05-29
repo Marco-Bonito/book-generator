@@ -18,8 +18,8 @@ class DashboardPage extends BasePage {
   async setMainContent() {
     const grid = new GridLayout({
       styleGrid: { background: "#fafafa"},
-      items: ["Elemento 1", "Elemento 2", "Elemento 2", "Elemento 2", "Elemento 2", "Elemento 2"],
       styleElement: { padding: "20px", background: "#f2f2f2", textAlign: "center" },
+      items: ["Elemento 1", "Elemento 2", "Elemento 2", "Elemento 2", "Elemento 2", "Elemento 2"],
     });
     return grid.render(); // <-- usa il metodo render()
   }

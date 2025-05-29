@@ -60,3 +60,9 @@ html, body {
   height: fit-content;
   width: fit-content;
 }
+
+.card {
+  display: flex;
+  width: 50px;
+  height: auto;
+}
