@@ -60,20 +60,15 @@ html, body {
     padding: 10px;
 }
 
+/* global.css */
 .grid-container {
   /* Default for larger screens or a baseline */
   grid-template-columns: repeat(5, 1fr); /* Example default */
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1240px) {
   .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -83,8 +78,14 @@ html, body {
   }
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 992px) {
   .grid-container {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
