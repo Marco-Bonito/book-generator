@@ -8,7 +8,8 @@ class DashboardPage extends BasePage {
     let grid = `<div style="display: flex;
                             flex-wrap: wrap;
                             align-items: stretch;
-                            justify-content: justify-content;">`;
+                            justify-content: justify-content;
+                            gap: 20px; /* Add some spacing between grid items */">`;
     const colors = ["#f2f2f2", "#d1e7dd"];
     for (let i = 0; i < 6; i++) {
       grid += `<div style="padding: 20px; background: ${
@@ -19,11 +20,11 @@ class DashboardPage extends BasePage {
     return grid;
   }
 
- async setMainContent() {
+async setMainContent() {
   let grid = `<div class="grid-container" style="display: grid;
-                                                    gap: 20px; /* Add some spacing between grid items */
-                                                    justify-items: center; /* Center items within their grid cells */
-                                                    align-items: stretch;">`; // Make items stretch to fill their height
+                                                  gap: 20px; /* Add some spacing between grid items */
+                                                  justify-items: center; /* Center items within their grid cells */
+                                                  align-items: stretch;">`;
 
   const colors = ["#f2f2f2", "#d1e7dd"];
   for (let i = 0; i < 6; i++) {
