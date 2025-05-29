@@ -19,18 +19,21 @@ class DashboardPage extends BasePage {
     return grid;
   }
 
-  async setMainContent() {
-    // Esempio di griglia 5x2 con colori alternati
-    let grid = `<div style="display: grid; gap: 20px;">`;
-    const colors = ["#f2f2f2", "#d1e7dd"];
-    for (let i = 0; i < 6; i++) {
-      grid += `<div class="card_book" style="padding: 20px; background: ${
-        colors[i % 2]
-      }; text-align: center;">Box ${i + 1}</div>`;
-    }
-    grid += `</div>`;
-    return grid;
+ async setMainContent() {
+  let grid = `<div class="grid-container" style="display: grid;
+                                                    gap: 20px; /* Add some spacing between grid items */
+                                                    justify-items: center; /* Center items within their grid cells */
+                                                    align-items: stretch;">`; // Make items stretch to fill their height
+
+  const colors = ["#f2f2f2", "#d1e7dd"];
+  for (let i = 0; i < 6; i++) {
+    grid += `<div class="card_book" style="padding: 20px; background: ${
+      colors[i % 2]
+    }; text-align: center;">Box ${i + 1}</div>`;
   }
+  grid += `</div>`;
+  return grid;
+}
   async setFooterContent() {
     return `
             <div style="padding: 10px; background: #eee;">

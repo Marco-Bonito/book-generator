@@ -60,26 +60,31 @@ html, body {
     padding: 10px;
 }
 
-@media screen and(max-width: 768px){
-    div.grid{
-        grid-template-columns: repeat(1, 1fr);
-    }    
+.grid-container {
+  /* Default for larger screens or a baseline */
+  grid-template-columns: repeat(5, 1fr); /* Example default */
 }
 
-@media screen and(max-width: 992px){
-    div.grid{
-        grid-template-columns: repeat(2, 1fr);
-    }    
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
-@media screen and(max-width: 1100px){
-    div.grid{
-        grid-template-columns: repeat(3, 1fr);
-    }    
+@media screen and (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media screen and(max-width: 1240px){
-    div.grid{
-        grid-template-columns: repeat(4, 1fr);
-    }    
+@media screen and (max-width: 1100px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1240px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
