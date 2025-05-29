@@ -8,7 +8,7 @@ class DashboardPage extends BasePage {
   
   async setHeaderContent() {
     const grid = new GridLayout({
-      style: { background: "#fafafa", padding: "20px" },
+      style: { background: "#fafafa", padding: "20px"},
       items: ["Elemento 1", "Elemento 2"],
     });
     grid.addItem("Elemento 3");
