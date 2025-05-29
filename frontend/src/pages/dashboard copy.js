@@ -8,7 +8,7 @@ class DashboardPage extends BasePage {
   
   async setHeaderContent() {
     const grid = new GridLayout({
-      style: { background: "#fafafa", padding: "20px" },
+      styleGrid: { background: "#fafafa"},
       items: ["Elemento 1", "Elemento 2"],
     });
     grid.addItem("Elemento 3");
@@ -16,16 +16,12 @@ class DashboardPage extends BasePage {
   }
 
   async setMainContent() {
-    let grid = new GridLayout();
+    const grid = new GridLayout({
+      styleGrid: { background: "#fafafa"},
+      items: ["Elemento 1", "Elemento 2", "Elemento 2", "Elemento 2", "Elemento 2", "Elemento 2"],
+      styleElement: { padding: "20px", background: "#f2f2f2", textAlign: "center" },
+    });
     return grid.render(); // <-- usa il metodo render()
-  }
-  
-  async setFooterContent() {
-    return `
-            <div style="padding: 10px; background: #eee;">
-                <input type="text" placeholder="Scrivi qui..." style="width: 100%; padding: 8px;"/>
-            </div>
-        `;
   }
 
   async render() {

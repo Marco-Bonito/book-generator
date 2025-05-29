@@ -1,7 +1,8 @@
 class GridLayout {
-    constructor({ style = {}, items = [] } = {}) {
-        this.style = style;
+    constructor({ styleGrid = {}, items = []  , styleElement = {}} = {}) {
+        this.style = styleGrid;
         this.items = items;
+        this.styleElement = styleElement;
     }
 
     addItem(item) {
@@ -14,18 +15,18 @@ class GridLayout {
         }
     }
 
-    // Genera HTML per la grid come stringa
     render() {
-        const styleString = Object.entries({
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '1rem',
+        const styleString = Object.entries({         
             ...this.style
         }).map(([k, v]) => `${k.replace(/[A-Z]/g, m => '-' + m.toLowerCase())}:${v}`).join(';');
 
+        const styleElementString = Object.entries({         
+            ...this.styleElement
+        }).map(([k, v]) => `${k.replace(/[A-Z]/g, m => '-' + m.toLowerCase())}:${v}`).join(';');
+
         return `
-            <div style="${styleString}">
-                ${this.items.map(item => `<div>${item}</div>`).join('')}
+            <div class="grid-layout" style="${styleString}">
+                ${this.items.map(item => `<div class="grid-element" style="${styleElementString}">${item}</div>`).join('')}
             </div>
         `;
     }
