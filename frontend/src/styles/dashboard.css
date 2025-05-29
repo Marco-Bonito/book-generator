@@ -1,21 +1,18 @@
 /* dashboard.css */
 #header-content {
-  background-color: rgb(223, 223, 223);
-  max-width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: green;
+  width: 70%;
 }
 
 #main-content {
   background-color: black;
-  max-width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 70%;
 }
 
-.card_book {
-  display: flex;
-  width: 50px;
-  height: auto;
+#footer-content {
+  background-color: red;
+  width: 70%;
 }
+
+
 

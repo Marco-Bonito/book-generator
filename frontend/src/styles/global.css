@@ -29,6 +29,9 @@ html, body {
 #main-container {
     flex: 1 0 85%;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #footer-container {
@@ -42,50 +45,24 @@ html, body {
     overflow-y: auto;
 }
 
-#header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-#main-content {
-    padding: 10px;
-}
-
-#footer-content {
-    display: flex;
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    width: 100% !important;
+    height: 100% !important;
     align-items: center;
-    justify-content: center;
-    padding: 10px;
+    justify-items: center;
+    padding: 5px;
 }
 
-/* global.css */
-.grid-container {
-  /* Default for larger screens or a baseline */
-  grid-template-columns: repeat(5, 1fr); /* Example default */
+.grid-element {
+  height: fit-content;
+  width: fit-content;
 }
 
-@media screen and (max-width: 1240px) {
-  .grid-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .grid-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
+.card {
+  display: flex;
+  width: 50px;
+  height: auto;
 }
