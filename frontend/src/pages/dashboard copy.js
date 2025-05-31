@@ -8,11 +8,15 @@ class DashboardPage extends BasePage {
   
   async setHeaderContent() {
     const grid = new GridLayout({
-      styleGrid: { background: "#fafafa"},
-      items: ["Elemento 1", "Elemento 2"],
-    });
-    grid.addItem("Elemento 3");
-    return grid.render(); // <-- usa il metodo render()
+    styleGrid: { background: "#fafafa" },
+    styleElement: { padding: "20px", background: "#f2f2f2", textAlign: "center" },
+    items: [
+      { id: "custom1", content: "Elemento Personalizzato 1" },
+      { content: "Elemento 2" },
+      "Elemento 3"
+    ]
+  });
+    return grid.render(); 
   }
 
   async setMainContent() {
@@ -21,7 +25,7 @@ class DashboardPage extends BasePage {
       styleElement: { padding: "20px", background: "#f2f2f2", textAlign: "center" },
       items: ["Elemento 1", "Elemento 2", "Elemento 2", "Elemento 2", "Elemento 2", "Elemento 2"],
     });
-    return grid.render(); // <-- usa il metodo render()
+    return grid.render(); 
   }
 
   async render() {
