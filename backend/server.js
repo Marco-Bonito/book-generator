@@ -1,11 +1,14 @@
-import env from "/utils/localEnvConfig.js";
-import app from "./src/utils/expressConfig.js";
+import env from "./src/utils/localEnvConfig.js";
+import express from "express";
 import cors from "cors";
-import userRoutes from "/routes/user_route.js";
-import bookRoutes from "/routes/book_route.js";
-import authRoutes from "/routes/auth_route.js";
+import userRoutes from "./src/routes/user_route.js";
+import bookRoutes from "./src/routes/book_route.js";
+import authRoutes from "./src/routes/auth_route.js";
 
-const PORT = env.PORT || 3000;
+const PORT = env.PORT || 8080;
+const app = express();
+
+app.use(express.json());
 app.use(
   cors({
     origin: ["http://localhost:3000/"],
