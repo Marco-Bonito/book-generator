@@ -1,6 +1,8 @@
 import cardLayout from "../components/card.js";
 import GridLayout from "../components/grid.js";
+import Functions from "../scripts/functions.js";
 import BasePage from "../scripts/internal_page_structure.js";
+
 
 class DashboardPage extends BasePage {
   async setImportScripts() {
@@ -21,6 +23,9 @@ class DashboardPage extends BasePage {
   }
 
   async setMainContent() {
+    const generalFunction = new Functions();
+    let books = await generalFunction.httpPost({ title: "titolo", creationDate: "01/01/2000", genres: "genere", plot: "trama" }, "/book/add");
+    console.log(books);
       const card1 = new cardLayout({
       title: "Card 1",
       description: "Descrizione della Card 1",
