@@ -36,3 +36,13 @@ export const createUser = async (req, res) => {
 
   res.send(data);
 };
+
+export const registration = async (req, res) => {
+  const { email, password } = req.body;
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+}
