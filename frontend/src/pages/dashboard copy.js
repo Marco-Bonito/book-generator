@@ -12,20 +12,32 @@ class DashboardPage extends BasePage {
   async setHeaderContent() {
     const grid = new GridLayout({
     styleGrid: { background: "#fafafa" },
-    styleElement: {background: "#f2f2f2", textAlign: "center", display: "flex", flexWrap: "nowrap", alignItems: "center",  justifyContent: "center", gap: "20px", width: "100%" },
+    styleElement: { background: "#f2f2f2", textAlign: "center", display: "flex", flexWrap: "nowrap", alignItems: "center", justifyContent: "center", gap: "20px", width: "100%" },
     items: [
-      { id: "custom1", content: "Elemento Personalizzato 1" },
+      { id: "addBookButton", content: `<input type="button" id="addBookButton" value="Click me">` },
       { content: "Elemento 2" },
       "Elemento 3"
     ]
   });
+  // Dopo il render, aggiungi il listener
+  setTimeout(() => {
+    const btn = document.getElementById("addBookButton");
+    if (btn) btn.addEventListener("click", () => this.addBook());
+  }, 0);
     return grid.render(); 
   }
 
-  async setMainContent() {
+  async addBook() {
     const generalFunction = new Functions();
-    let books = await generalFunction.httpPost({ title: "titolo", creationDate: "01/01/2000", genres: "genere", plot: "trama" }, "/book/add");
-    console.log(books);
+    try {
+      const response = await generalFunction.httpPost({ title: "titolo", creationDate: "01/01/2000", genres: "genere", plot: "trama" }, "/book/add");
+      console.log(response);
+    } catch (error) {
+      console.error("Error adding book:", error);
+    }
+  }
+
+  async setMainContent() {
       const card1 = new cardLayout({
       title: "Card 1",
       description: "Descrizione della Card 1",
