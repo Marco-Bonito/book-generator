@@ -1,6 +1,6 @@
 import PageLayoutManager from './page_layout_manager.js';
 import Navigator from './navigator.js';
-import DashboardPage from '../pages/dashboard copy.js'; // importa la pagina
+import DashboardPage from '../pages/dev_dashboard.js'; // importa la pagina
 
 document.addEventListener('DOMContentLoaded', () => {
     const layoutManager = new PageLayoutManager();
