@@ -14,7 +14,7 @@ class DashboardPage extends BasePage {
     styleGrid: { background: "#fafafa" },
     styleElement: { background: "#f2f2f2", textAlign: "center", display: "flex", flexWrap: "nowrap", alignItems: "center", justifyContent: "center", gap: "20px", width: "100%" },
     items: [
-      { id: "addBookButton", content: `<input type="button" id="addBookButton" value="Click me">` },
+      { content: `<button id="addBookButton">Add Book</button>` },
       { content: "Elemento 2" },
       "Elemento 3"
     ]
@@ -22,20 +22,45 @@ class DashboardPage extends BasePage {
   // Dopo il render, aggiungi il listener
   setTimeout(() => {
     const btn = document.getElementById("addBookButton");
-    if (btn) btn.addEventListener("click", () => this.addBook());
+    if (btn) btn.addEventListener("click", () => this.showDialog());
   }, 0);
     return grid.render(); 
   }
 
-  async addBook() {
+  async addBook(book={}) {
     const generalFunction = new Functions();
     try {
-      const response = await generalFunction.httpPost({ title: "titolo", creationDate: "01/01/2000", genres: "genere", plot: "trama" }, "/book/add");
+      const response = await generalFunction.httpPost(book, "/book/add");
       console.log(response);
     } catch (error) {
       console.error("Error adding book:", error);
     }
   }
+
+  showDialog() { 
+  const dialog = document.getElementById("generic-dialog");
+  dialog.style = "border-radius: 10px; width: 600px; height: 800px; background-color: white; padding: 20px;";
+  dialog.innerHTML = `<h2>Add Book</h2>
+    <form id="addBookForm">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required>
+      <label for="creationDate">Creation Date:</label>
+      <input type="date" id="creationDate" name="creationDate" required>
+      <label for="genres">Genres:</label>
+      <input type="text" id="genres" name="genres" required>
+      <label for="plot">Plot:</label>
+      <textarea id="plot" name="plot" required></textarea>
+      <button type="submit">Add Book</button>
+    </form>`;
+  dialog.show(); 
+} 
+
+  closeDialog() { 
+  const dialog = document.getElementById("generic-dialog");
+  dialog.close(); 
+} 
 
   async setMainContent() {
       const card1 = new cardLayout({
@@ -60,5 +85,7 @@ class DashboardPage extends BasePage {
     await this.afterRender();
   }
 }
+
+
 
 export default DashboardPage;
