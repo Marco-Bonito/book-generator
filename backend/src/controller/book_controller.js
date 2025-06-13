@@ -4,9 +4,9 @@ import { supabase } from '../utils/supabaseConfig.js';
 export const addBook =
 async (req, res, next) => {
   try {
-    const { title, creationDate, genres, plot } = req.body;
+    const { title, creationDate, genres, plot, cover } = req.body;
     // Here you would typically add the book to your database
-    req.book = { title, creationDate, genres, plot }; // Store book data in request object
+    req.book = { title, creationDate, genres, plot, cover }; // Store book data in request object
     console.log("Book added:", req.book);
     res.status(201).json({
       message: "Book added successfully",
@@ -20,9 +20,9 @@ async (req, res, next) => {
 export const updateBook =
 async (req, res, next) => {
   try {
-    const { id, title, creationDate, genres, plot } = req.body;
+    const { id, title, creationDate, genres, plot, cover } = req.body;
     // Here you would typically update the book in your database
-    req.book = { id, title, creationDate, genres, plot }; // Store updated book data in request object
+    req.book = { id, title, creationDate, genres, plot, cover }; // Store updated book data in request object
     console.log("Book updated:", req.book);
     res.status(200).json({
       message: "Book updated successfully",
@@ -50,15 +50,31 @@ async (req, res, next) => {
 }
 // QUERY SELEZIONE BOOK
 export const getBook = async (req, res) => {
-  const { id } = req.body;
+  const { bookId } = req.body;
 
   let query = supabase
     .from('book')
     .select('*')
-    .eq('id', id);
+    .eq('id', bookId);
 
   const { data, error } = await query;
     
+
+  if (error) {
+    res.send(error);
+    return;
+  }
+
+  res.send(data);
+};
+// QUERY SELEZIONE TUTTI I BOOK
+export const getAllBooks = async (req, res) => {
+
+  let query = supabase
+    .from('book')
+    .select('*');
+
+  const { data, error } = await query;
 
   if (error) {
     res.send(error);
@@ -75,6 +91,7 @@ export const createBook = async (req, res) => {
     creationDate : req.body.creationDate,
     genres : req.body.genres,
     plot : req.body.plot,
+    cover : req.body.cover || null, // Optional cover field
   };
 
   const { data, error } = await supabase.from('book').insert([book]);
@@ -90,11 +107,11 @@ export const createBook = async (req, res) => {
 
 // QUERY MODIFICA BOOK
 export const modifyBook = async (req, res) => {
-  const { id, title, author, creationDate, genres, plot } = req.body;
+  const { id, title, author, creationDate, genres, plot, cover } = req.body;
 
   const { data, error } = await supabase
     .from('book')
-    .update({ title, author, creationDate, genres, plot })
+    .update({ title, author, creationDate, genres, plot, cover: cover || null }) // Optional cover field
     .eq('id', id);
 
   if (error) {

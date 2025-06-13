@@ -4,6 +4,19 @@ html, body {
     padding: 0;
 }
 
+#popup-blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background: rgba(255,255,255,0.2);      /* leggero bianco trasparente */
+  backdrop-filter: blur(6px);             /* effetto blur */
+  transition: opacity 0.3s;
+  opacity: 1;
+}
+
 #general-container {
     display: flex;
     flex-direction: row;
@@ -18,7 +31,7 @@ html, body {
 }
 
 #header-container {
-    flex: 0 0 10%; 
+    flex: 0 0 5%; 
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     display: flex;
@@ -66,3 +79,16 @@ html, body {
   width: 50px;
   height: auto;
 }
+
+#generic-dialog {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+#generic-dialog.open {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+

@@ -3,12 +3,12 @@ export const addBookMiddleware = (req, res, next) => {
   console.log("Adding book...");
   const { title, creationDate, genres, plot } = req.body;
 
-  if (!title || !creationDate || !genres || !plot) {
+  if (!title || !creationDate || !genres || !plot || !cover) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
   // Here you would typically add the book to your database
-  req.book = { title, creationDate, genres, plot }; // Store book data in request object
+  req.book = { title, creationDate, genres, plot, cover }; // Store book data in request object
   next(); // Call the next middleware
 };
 
@@ -39,3 +39,11 @@ export const updateBookMiddleware = (req, res, next) => {
   req.book = { id, title, creationDate, genres, plot }; // Store updated book data in request object
   next(); // Call the next middleware
 }
+
+export const getBookMiddleware = (req, res, next) => {
+  next(); // Call the next middleware
+};
+
+export const getAllBookMiddleware = (req, res, next) => {
+  next(); // Call the next middleware
+};
