@@ -1,6 +1,7 @@
 import PageLayoutManager from './page_layout_manager.js';
 import Navigator from './navigator.js';
 import DashboardPage from '../pages/dev_dashboard.js'; // importa la pagina
+import BookEditor from '../pages/book_detail.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const layoutManager = new PageLayoutManager();
@@ -14,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const hash = window.location.hash;
         if (hash === '#/dashboard' || hash === '' || hash === '#/') {
             new DashboardPage();
+        }
+        if (hash === '#/book_detail') {
+            new BookEditor();
         }
         // Qui puoi aggiungere altre route in futuro
     }

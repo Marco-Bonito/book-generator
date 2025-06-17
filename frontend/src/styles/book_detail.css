@@ -1,0 +1,21 @@
+#header-content {
+  background-color: green;
+  width: 70%;
+}
+
+#main-content {
+  background-color: black;
+  width: 70%;
+}
+
+#footer-content {
+  background-color: red;
+  width: 70%;
+}
+
+#header-container, #main-content, body {
+  background-color: rgb(44, 44, 44);
+}
+
+
+
